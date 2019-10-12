@@ -12,15 +12,25 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "lint": "eslint --ext .js ./",
-    "lint-fix": "eslint --fix --ext .js ./",
-    "lint-staged": "lint-staged",
-    "prettier": "prettier --write \"**/*.{js,json}\"",
-    "format": "npm run prettier && npm run lint:fix",
     "start": "webpack-dev-server --env.NODE_ENV=development --config webpack.dev.js",
     "build": "webpack --env.NODE_ENV=production --config webpack.prod.js",
     "build-dev": "webpack --env.NODE_ENV=development --config webpack.dev.js",
-    "cm": "npm run lint-staged && git commit"
+    "lint": "eslint --ext .js ./",
+    "lint-fix": "eslint --fix --ext .js ./",
+    "prettier": "prettier --write \"**/*.{js,json}\"",
+    "format": "npm run prettier && npm run lint-fix",
+    "cm": "git-cz"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "config": {
+    "commitizen": {
+      "path": "cz-conventional-changelog"
+    }
   },
   "lint-staged": {
     "*.json": [
@@ -53,12 +63,16 @@
     "@babel/plugin-syntax-dynamic-import": "^7.2.0",
     "@babel/preset-env": "^7.6.0",
     "@babel/preset-react": "^7.0.0",
+    "@commitlint/cli": "^8.2.0",
+    "@commitlint/config-conventional": "^8.2.0",
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "clean-webpack-plugin": "^3.0.0",
+    "commitizen": "^4.0.3",
     "copy-webpack-plugin": "^5.0.4",
     "css-loader": "^3.2.0",
     "cssnano": "^4.1.10",
+    "cz-conventional-changelog": "^3.0.2",
     "eslint": "^6.1.0",
     "eslint-config-y-react": "^4.0.0",
     "eslint-import-resolver-webpack": "^0.11.1",
@@ -69,8 +83,10 @@
     "eslint-plugin-react-hooks": "^1.6.1",
     "file-loader": "^4.2.0",
     "html-webpack-plugin": "^3.2.0",
+    "husky": "^3.0.8",
     "less": "^3.10.3",
     "less-loader": "^5.0.0",
+    "lint-staged": "^9.4.2",
     "mini-css-extract-plugin": "^0.8.0",
     "node-sass": "^4.12.0",
     "postcss-loader": "^3.0.0",
