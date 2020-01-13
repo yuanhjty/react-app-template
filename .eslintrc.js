@@ -5,11 +5,6 @@ module.exports = {
   parser: 'babel-eslint',
   plugins: ['babel'],
   extends: ['y-react'],
-  rules: {
-    'no-unused-vars': ['error', { ignoreRestSiblings: true }],
-    'no-plusplus': 'off',
-    'no-shadow': 'off',
-  },
   settings: {
     'import/resolver': {
       webpack: { config: path.resolve(__dirname, 'webpack.common.js'), env: 'development' },

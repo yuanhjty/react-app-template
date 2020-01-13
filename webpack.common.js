@@ -116,12 +116,12 @@ module.exports = env => {
     resolve: {
       extensions: ['.js'],
       alias: {
-        '@': path.resolve(__dirname, 'src'),
-        'app': path.resolve(__dirname, 'src/app'),
-        'features': path.resolve(__dirname, 'src/features'),
-        'components': path.resolve(__dirname, 'src/components'),
-        'utils': path.resolve(__dirname, 'src/utils'),
-        'store': path.resolve(__dirname, 'src/store'),
+        src: path.resolve(__dirname, 'src'),
+        app: path.resolve(__dirname, 'src/app'),
+        features: path.resolve(__dirname, 'src/features'),
+        components: path.resolve(__dirname, 'src/components'),
+        utils: path.resolve(__dirname, 'src/utils'),
+        stores: path.resolve(__dirname, 'src/stores'),
       },
     },
     plugins,
